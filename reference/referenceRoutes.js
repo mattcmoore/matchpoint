@@ -1,15 +1,3 @@
-// Required dependencies
-import {} from 'dotenv'
-import express from "express"
-const app = express()
-import postgres from "postgres"
-const sql = postgres(process.env.DATABASE_URL)
-import client from "./db"
-const port = process.env.PORT || 8000
-
-
-app.use(express.static("public"));
-
 app.use(express.json());
 app.route('/pets')
     .get( async (req, res) => {
@@ -72,10 +60,7 @@ app.use((req, res) => {
     res.status(404).type('text/plain').send('Not found')
 })
 
-// Server Listening
-app.listen(port, () => {
-    console.log(`Server listening on port: ${port}`)
-})
+
 
 // Create Pet Object Validation 
 function createPetValidation(obj) {

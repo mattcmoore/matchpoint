@@ -1,7 +1,7 @@
 TRUNCATE TABLE locations,users RESTART IDENTITY CASCADE;
 
 INSERT INTO locations (location_name,address,open_time,close_time,rating,thumbnail_url) VALUES 
-    (   'George Stepanof Ocean Beach Volleyball Courts',
+    (   'George Stepanof Ocean Beach',
         '2100 SPRAY STREET SAN DIEGO, CA 92107',
         '10:00:00',
         '18:30:00',
@@ -9,14 +9,14 @@ INSERT INTO locations (location_name,address,open_time,close_time,rating,thumbna
         'https://tinyurl.com/5n98yzsh'
     ),
     (
-        'South Mission Beach Volleyball Courts',
+        'South Mission Beach',
         '2597 N JETTY RD SAN DIEGO, CA 92109',
         '10:00:00',
         '18:30:00',
         5,
         'https://tinyurl.com/5cpkwh92'    ),
     (
-        'Cohassett Volleyball Court',
+        'Cohassett Court',
         '2918 OCEAN FRONT WALK SAN DIEGO, CA 92109 ',
         '10:00:00',
         '18:30:00',
@@ -24,7 +24,7 @@ INSERT INTO locations (location_name,address,open_time,close_time,rating,thumbna
         'https://tinyurl.com/2p9c9z3j'
     ),
     (
-        'Coronado Central Beach Volleyball Courts',
+        'Coronado Central',
         '920 OCEAN BLVD, CORONADO, CA 92118',
         '8:00:00',
         '18:30:00',
@@ -32,18 +32,19 @@ INSERT INTO locations (location_name,address,open_time,close_time,rating,thumbna
         'https://tinyurl.com/3rw98w6n'
     ),
     (
-        'South Ponto Beach Volleyball Courts',
+        'South Ponto Beach',
         'LA COSTA AVE HWY 101 CARLSBAD, CA 92008',
         '11:00:00',
         '18:30:00',
         4.8,
         'https://tinyurl.com/2k3m22bj'
     ); 
-INSERT INTO users (first_name, last_name, address, email, phone, avatar_url)VALUES ( 
+INSERT INTO users (first_name, last_name, address, email, password, phone, avatar_url)VALUES ( 
         'Matt',
         'Moore',
         NULL,
         'matt@mattcmoore.com',
+        'volleyball',
         '8185559626',
         NULL
     );

@@ -22,6 +22,7 @@ CREATE TABLE users (
   last_name VARCHAR(50) NOT NULL,
   address VARCHAR(255),
   email VARCHAR(100),
+  password VARCHAR(50),
   phone VARCHAR(10),
   avatar_url VARCHAR(255)
 );
@@ -34,3 +35,4 @@ CREATE TABLE reservations (
   seek_match BOOLEAN,
   players INTEGER 
 );
+-- render url postgres://matchpointdb_user:SNoNbIm4Mla9sy7mNaouXx5IEuSmtLZy@dpg-cfc5tt9gp3jokp7lpg8g-a/matchpointdb

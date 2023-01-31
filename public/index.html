@@ -4,11 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Server</title>
-    <script async src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script async src="main.js"></script>
 </head>
 <body>
-    <h1>Home Page!</h1>
-    <h2>Navigate to "/api/students" to test the "GET all students" route, and the Database</h2>
-    <h2>Open the chrome console to see your frontend JS running!</h2>
+    <!-- <h1>Home Page!</h1>
+    <h2>Navigate to "/locations" to test the "GET all locations" route, and the Database</h2>
+    <h2>Open the chrome console to see your frontend JS running!</h2> -->
+
+    <div id="nav">
+        <div id="logo-container">
+            <div id="logo"></div>
+            </div>
+        <div id="nav-container">
+            <!-- <p>Find A Match</p>  -->
+            <p>Change A Reservation</p>
+            <div="login">
+                <p>login/sign up</p>
+                <div id="logged-in">
+                    <div id="login-avatar"></div>
+                    <p></p>
+                    <p>My Account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="locationContainer"></div>
+        <div id="map-picker"></div>
+        <div id="reservations"></div>
+        <div id="reservation-complete"></div>   
+    </div>
 </body>
 </html>

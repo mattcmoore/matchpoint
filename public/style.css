@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+}
+#nav{
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 6.5%;
+    width: 100%;
+    display: flex;
+}
+#nav-container{
+    position:absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 5%;
+}
+#logo-container{
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    justify-content: flex-start;
+    align-items: baseline
+}
+#logo{
+    height: 100%;
+    width: 20%;
+    background-image: url('img/logo6.png');
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 2%;
+}
+#main{
+    position:absolute;
+    top: 6.5%;
+    width: 100%;
+    min-height: 93.5%;
+
+}
+.locationContainer{
+    /* fix with flexbox */
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 20%;
+    height:100%;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.locationItm{
+    height: 19.5%; 
+    width: 100%;
+    background-color: white;
+    border-bottom: .5px solid gainsboro;
+    /* background-image: url('') */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.locationItm:after{
+    content:" ";
+    z-index: 2;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top 0;
+    left 0;
+    background-color: rgba(250,250,250,0.25);
+}
+.locationItm p{
+    color: blue;
+    z-index: 3;
+    margin-right: 5px;
+}
+.resBtn{
+    display: block;
+    border-radius: 25px;
+    width: 85%;
+    border: 1.5px solid black;
+    padding: 5px;
+    margin: 0 auto;
+}
+.map-picker{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: lightsalmon;
+    background-image: url("img/fakemap.png");
+    background-repeat: no-repeat;
+    background-position: -10% 1%;
+    z-index: -1;
+}
+.locationContainer-click{
+    display: none;
+}
+.map-picker-click{
+    display:none;
+}
+.reservations{
+    position: absolute;
+    background-color:blueviolet;
+    height: 100%;
+    width: 100%;
+}
+.reservations-click{
+    display: none;
+}

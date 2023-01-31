@@ -1,11 +1,15 @@
-const { Pool } = require('pg')
-
-export const client = new Pool({
-    user: " ", // database username
-    password: " ", // database password
-    host: " ", // host name
-    port: 5432, // default port
-    database: " " //db name
+import pkg from "pg"
+const {Pool} = pkg
+const connectionString = process.env.DATABASE_URL
+//SYNTAX PLEASE!!!
+// const client = new Pool({
+//     connectionString,
+// })
+const client = new Pool({
+    user: "matt",
+    password: "volleyball",
+    host: "localhost",
+    port: 5432,
+    database: "matchpoint_db"
 })
-
-// module.exports = client;
+export {client}
