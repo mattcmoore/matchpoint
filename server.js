@@ -4,9 +4,11 @@ import express from "express"
 const app = express()
 import {client} from "./db/db.js"
 const port = process.env.PORT || 8000
+import cors from "cors"
 
 app.use(express.json())
 app.use(express.static("public"))
+app.use(cors())
 
 app.get("/locations", async (_, res) => {
     try {
@@ -16,16 +18,13 @@ app.get("/locations", async (_, res) => {
         res.status(500).type('text/plain').send(error)
     }          
 });
-app.post("/test", async (req, res) => {
-    let username = await req.body.username
-    let password = req.body.password
+app.post("/login", async (req, res) => {
     try {
-        // res.send(`Username: ${username} Password: ${password}`);
-        res.send(username)
+        console.log(req.body)
+        res.status(200).type('application/json').send(JSON.stringify(req.body))
     } catch(error) {
         res.status(500).type('text/plain').send(error)
     }  
-    
 })
 
 // Server Listening

@@ -31,12 +31,12 @@
     </div>
     <div id="main">
         <div id="login">
-            <form id="login-form" action="/test" method="POST">
+            <form id="login-form">
                 <label>Username</label>
-                <input type="text" name="username">
+                <input id="login-username" type="text" name="username">
                 <label>Password</label>
-                <input type="text" name="password">
-                <input type="submit" value="Login">
+                <input id="login-password" type="text" name="password">
+                <input id="login-btn" type="submit" value="Login">
 
             </form>
         </div>
@@ -44,7 +44,24 @@
             <div id="locationContainer"></div>
             <div id="map-picker"></div>
         </div>
-        <div id="reservations"></div>
+        <div id="reservations">
+            <div id="reservations-container">
+                <div id="reservations-thumb"></div>
+                <div id="datepicker">
+                    <p>Choose A Date</p>
+                    <input type="date" id="date">
+                </div>
+                <div id="reservations-content">
+                    <p id="name"></p>
+                    <p id="stats">
+                        <span id="rating"></span>
+                        <span id="courts"></span>
+                    </p>
+                    <p id="address"></p>
+                    <p id="hours"><span id="open"></span> - <span id="open"></span> </p>
+                </div>
+            </div>
+        </div>
         <div id="reservation-complete"></div>   
     </div>
 </body>

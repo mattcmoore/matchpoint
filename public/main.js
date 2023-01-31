@@ -1,22 +1,14 @@
-// import express from "express"
-// const app = express()
-// app.use(express.json())
-// async fetchLocations(){
-//   const response = await fetch("/locations")
-//   const locations = await response.json()
-//   console.log("location data", locations)
-// }
 const login = document.querySelector("#login")
 login.className = "hidden"
 const home = document.querySelector("#home")
 home.className = "home"
-const reservations = document.querySelector("#reservations")
 const locationContainer = document.querySelector("#locationContainer")
 locationContainer.className = "locationContainer"
 const mapPicker = document.querySelector("#map-picker")
 mapPicker.className = "map-picker"
-let logo  = document.querySelector("#logo")
-
+const reservations = document.querySelector("#reservations")
+reservations.className = 'hidden'
+const logo = document.querySelector("#logo") 
 logo.addEventListener('click',(e) =>{
   buildHome() 
 })
@@ -25,11 +17,12 @@ function buildHome(){
   hidden.forEach(el => {
     el.className = 'hidden'
   })
-  home.className = 'home'
-}  
+  home.className = 'home'  
+  console.log('hidden')
+}
 let loginBtn = document.querySelector("#loginBtn")
 loginBtn.addEventListener('click',(e) =>{
-  buildLogin() 
+    buildLogin() 
 })
 function buildLogin(){
   let hidden = document.querySelectorAll("#main > div:not(#login)")
@@ -38,7 +31,29 @@ function buildLogin(){
   })
   login.className = 'login'
 }
+login.addEventListener('click', (e) =>{  
+  e.preventDefault()
+  const req = {}
+  req['username'] = document.getElementById("login-username").value
+  req['password'] = document.getElementById("login-password").value
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(req)
+  }
+  fetch("/login", options)
+  .then((response) => response.json())
+  .then((data) => {
+     console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+})
 
+// fetch("/locations")
 fetch("/locations")
   .then((res) => res.json())
   .then((data) => {
@@ -64,6 +79,15 @@ function buildLocationMenu(arr){
         el.className = 'hidden'
       })
       reservations.className = 'reservations'
+      buildReservation(el)
     })
+    
   })     
+}
+function buildReservation(row){
+  // fetch('location')    
+  
+  // send a post request with the id doing a join with courts where courts.id = row.id
+  // loop through the results and fill in the blanks
+
 }
