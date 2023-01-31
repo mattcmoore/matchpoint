@@ -4,6 +4,9 @@ body{
     margin: 0;
     font-family: 'Rajdhani', sans-serif;
 }
+.hidden{
+    display: none;
+}
 #nav{
     position:absolute;
     top: 0;
@@ -47,6 +50,12 @@ body{
     width: 100%;
     min-height: 93.5%;
 
+}
+.home{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-color: lightsalmon; */
 }
 .locationContainer{
     /* fix with flexbox */
@@ -102,18 +111,21 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: lightsalmon;
     background-image: url("img/fakemap.png");
     background-repeat: no-repeat;
     background-position: -10% 1%;
     z-index: -1;
 }
-.locationContainer-click{
-    display: none;
+.login{
+    position: absolute;
+    background-color: orangered;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.map-picker-click{
-    display:none;
-}
+
 .reservations{
     position: absolute;
     background-color:blueviolet;
