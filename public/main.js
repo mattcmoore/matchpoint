@@ -1,3 +1,6 @@
+// import express from "express"
+// const app = express()
+// app.use(express.json())
 // async fetchLocations(){
 //   const response = await fetch("/locations")
 //   const locations = await response.json()
@@ -56,9 +59,6 @@ function buildLocationMenu(arr){
     locationItm.appendChild(p)
     locationItm.appendChild(btn)
     btn.addEventListener('click',(e) =>{
-      // locationContainer.className = "hidden"
-      // mapPicker.className = "hidden"
-      // reservations.className = "reservations"
       let hidden = document.querySelectorAll("#main > div:not(#reservations)")
       hidden.forEach(el => {
         el.className = 'hidden'

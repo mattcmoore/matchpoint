@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Server</title>
     <link rel="stylesheet" href="style.css">
-    <script async src="main.js"></script>
+    <script type="module" async src="main.js"></script>
 </head>
 <body>
     <!-- <h1>Home Page!</h1>
@@ -30,7 +30,16 @@
         </div>
     </div>
     <div id="main">
-        <div id="login"></div>
+        <div id="login">
+            <form id="login-form" action="/login" method="post">
+                <label>Username</label>
+                <input type="text">
+                <label>Password</label>
+                <input type="text">
+                <input type="submit" value="Login">
+
+            </form>
+        </div>
         <div id="home">
             <div id="locationContainer"></div>
             <div id="map-picker"></div>
