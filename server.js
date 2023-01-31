@@ -16,9 +16,15 @@ app.get("/locations", async (_, res) => {
         res.status(500).type('text/plain').send(error)
     }          
 });
-app.post("/login", async (req, res) => {
-    let username = req.body.username
+app.post("/test", async (req, res) => {
+    let username = await req.body.username
     let password = req.body.password
+    try {
+        // res.send(`Username: ${username} Password: ${password}`);
+        res.send(username)
+    } catch(error) {
+        res.status(500).type('text/plain').send(error)
+    }  
     
 })
 
