@@ -1,5 +1,4 @@
 // Required dependencies
-import {} from "dotenv"
 import express from "express"
 const app = express()
 import {client} from "./db/db.js"
@@ -17,7 +16,16 @@ app.get("/locations", async (_, res) => {
     } catch(error) {
         res.status(500).type('text/plain').send(error)
     }          
-});
+})
+app.get("/locations/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        const result = await client.query('SELECT * FROM locations WHERE id = $1',[id]) 
+        res.status(200).type('application/json').json(result.rows)
+    } catch(error) {
+        res.status(500).type('text/plain').send(error)
+    }
+})
 app.post("/login", async (req, res) => {
     try {
         console.log(req.body)

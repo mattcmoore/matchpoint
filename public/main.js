@@ -1,3 +1,6 @@
+// import pkg from "luxon"
+// const {DateTime} from pkg
+
 const login = document.querySelector("#login")
 login.className = "hidden"
 const home = document.querySelector("#home")
@@ -44,7 +47,7 @@ login.addEventListener('click', (e) =>{
     body: JSON.stringify(req)
   }
   fetch("/login", options)
-  .then((response) => response.json())
+  .then((res) => res.json())
   .then((data) => {
      console.log('Success:', data);
     })
@@ -84,10 +87,30 @@ function buildLocationMenu(arr){
     
   })     
 }
-function buildReservation(row){
-  // fetch('location')    
-  
+function buildReservation(loc){
+  const locationName = document.querySelector("#location-name")
+  const rating = document.querySelector("#rating")
+  const address = document.querySelector("#address")
+  const open = document.querySelector("#open")
+  const close = document.querySelector("#close")
+  const str = loc.id.toString()
+  console.log(`/locations/${str}`)
+  fetch( `/locations/${str}`)
+  .then((res) => res.json())
+  .then((data) => {
+    //  console.log('Success:', data);
+    const obj = data[0]
+    locationName.innerText = obj['location_name']   
+    rating.innerText = obj['rating']
+    address.innerText = obj['address']
+    open.innerText = obj['open_time'].slice(0,-3)
+    close.innerText = obj['open_time'].slice(0,-3)
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  })  
   // send a post request with the id doing a join with courts where courts.id = row.id
   // loop through the results and fill in the blanks
 
 }
+// SELECT * FROM courts INNER JOIN locations ON courts.location_id=locations.id WHERE location_id = 1;
