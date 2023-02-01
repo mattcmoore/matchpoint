@@ -25,6 +25,10 @@ body{
     justify-content: flex-end;
     align-items: baseline;
     gap: 5%;
+    padding-right: 2%;
+}
+#nav-container p{
+    cursor: pointer;
 }
 #logo-container{
     position:absolute;
@@ -43,6 +47,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     margin-left: 2%;
+    cursor: pointer;
 }
 #main{
     position:absolute;
@@ -61,7 +66,7 @@ body{
     /* fix with flexbox */
     position: absolute;
     top: 0;
-    left: 10%;
+    left: 7.5%;
     width: 20%;
     height:100%;
     /* padding: 5px 0; */
@@ -81,28 +86,37 @@ body{
     background-position: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
 }
 .locationItm p{
-    color: blue;
+    font-weight: bolder;
+    color: white;
     z-index: 3;
     margin-right: 5px;
 }
 .resBtn{
     display: block;
+    position: relative;
+    bottom: 0;
+    font-weight: 100;
     border-radius: 25px;
     width: 85%;
-    border: 1.5px solid black;
+    border: 1.5px solid white;
     padding: 5px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    text-align: center;
+    cursor: pointer; 
+}
+#map-picker{
+    background-image: url("img/fakemap.png");
+    background-repeat: no-repeat;
+    background-position: -10% 1%;
 }
 .map-picker{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("img/fakemap.png");
-    background-repeat: no-repeat;
-    background-position: -10% 1%;
     z-index: -1;
 }
 .login{
@@ -126,7 +140,6 @@ body{
 }
 .reservations{
     position: absolute;
-    background-color:blueviolet;
     height: 100%;
     width: 100%;
     display: flex;
@@ -137,21 +150,51 @@ body{
     position: absolute;
     width: 70%;
     height: 80%;
-    background-color: pink;
     display: flex;
+    justify-content: center;
+}
+#reservations-content-container{ 
+    position: absolute;
+    top:0;left:0;
+    width: 47.5%;
+    height: 100%;
+    border: .5px solid black
 }
 #reservations-thumb{
     position: absolute;
     height: 50%;
-    width: 50%;
-    left:0;
-    background-color: lime;
+    width: 100%;
+    left: 0; top: 0;
+    background-size: cover;
+    background-repeat: no repeat;
+    background-position: center;
 }
-reservations-content
+#reservations-content{
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    height: 50%%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+#reservations-content p{
+    font-size: larger;
+    margin: 5px
+}
+#reservations-content p:first-child{
+    font-size: 20pt;
+    font-weight: bold;
+}
+#address img{
+    display: block;
+    height: 100%;
+}
 #datepicker{
     position: absolute;
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 47.5%;
     right: 0;
     background-color: cyan;
 }

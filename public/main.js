@@ -1,14 +1,13 @@
-// import pkg from "luxon"
-// const {DateTime} from pkg
-
+// import {picker} from 'datepicker.js' 
+//DOM
 const login = document.querySelector("#login")
 login.className = "hidden"
 const home = document.querySelector("#home")
 home.className = "home"
 const locationContainer = document.querySelector("#locationContainer")
 locationContainer.className = "locationContainer"
-const mapPicker = document.querySelector("#map-picker")
-mapPicker.className = "map-picker"
+// const mapPicker = document.querySelector("#map-picker")
+// mapPicker.className = "map-picker"
 const reservations = document.querySelector("#reservations")
 reservations.className = 'hidden'
 const logo = document.querySelector("#logo") 
@@ -82,12 +81,14 @@ function buildLocationMenu(arr){
         el.className = 'hidden'
       })
       reservations.className = 'reservations'
-      buildReservation(el)
+        buildReservation(el)
     })
     
-  })     
+  })
+
 }
 function buildReservation(loc){
+  const thumb = document.querySelector("#reservations-thumb")
   const locationName = document.querySelector("#location-name")
   const rating = document.querySelector("#rating")
   const address = document.querySelector("#address")
@@ -100,11 +101,16 @@ function buildReservation(loc){
   .then((data) => {
     //  console.log('Success:', data);
     const obj = data[0]
-    locationName.innerText = obj['location_name']   
+    if(obj['location_name'] === "Cohassett Court"){
+      locationName.innerText = obj['location_name'] 
+    }else{
+      locationName.innerText = obj['location_name']+" Volleyball Courts"  
+    }
+    thumb.style.backgroundImage = `url(${obj.thumbnail_url})`
     rating.innerText = obj['rating']
     address.innerText = obj['address']
     open.innerText = obj['open_time'].slice(0,-3)
-    close.innerText = obj['open_time'].slice(0,-3)
+    close.innerText = obj['close_time'].slice(0,-3)
   })
   .catch((error) => {
       console.error('Error:', error);

@@ -5,26 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Server</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module" async src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/html" href="/node_modules/window-date-picker/dist/css/window-date-picker.min.css" /> -->
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/>
+    <!-- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script> -->
 </head>
 <body>
-    <!-- <h1>Home Page!</h1>
-    <h2>Navigate to "/locations" to test the "GET all locations" route, and the Database</h2>
-    <h2>Open the chrome console to see your frontend JS running!</h2> -->
-
     <div id="nav">
         <div id="logo-container">
             <div id="logo"></div>
             </div>
         <div id="nav-container">
             <!-- <p>Find A Match</p>  -->
-            <p>Change A Reservation</p>
             <div="login">
                 <p id="loginBtn">login</p>
                 <div id="logged-in">
                     <div id="login-avatar"></div>
                     <p></p>
-                    <p>My Account</p>
                 </div>
             </div>
         </div>
@@ -37,27 +36,32 @@
                 <label>Password</label>
                 <input id="login-password" type="text" name="password">
                 <input id="login-btn" type="submit" value="Login">
-
             </form>
         </div>
         <div id="home">
             <div id="locationContainer"></div>
-            <div id="map-picker"></div>
+            <div id="map" class="map-picker"></div>
+            <!-- <div id="map-picker" class="map-picker"></div> -->
+            <!-- <script type="module" src="./js/map.js"></script> -->
         </div>
         <div id="reservations">
             <div id="reservations-container">
-                <div id="reservations-thumb"></div>
+                <div id="reservations-content-container">
+                    <div id="reservations-thumb"></div>
+                    <div id="reservations-content">
+                        <p id="location-name"></p>
+                        <p id="rating">
+                        <img src="img/pin.png" alt="pin"><p id="address"></p>
+                        <p id="hours">
+                            Hours: <span id="open"></span> - <span id="close"></span>
+                        </p>
+                    </div>
+                </div>
                 <div id="datepicker">
                     <p>Choose A Date</p>
-                    <input type="date" id="date">
-                </div>
-                <div id="reservations-content">
-                    <p id="location-name"></p>
-                    <p id="rating">
-                    <p id="address"></p>
-                    <p id="hours">
-                        <span id="open"></span> - <span id="close"></span>
-                    </p>
+                    <div id="blue-picker" class="wdp-blue"></div>
+                    <input id="demo">
+                    <button id="toggle">Lanuch</button>           
                 </div>
             </div>
         </div>

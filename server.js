@@ -1,4 +1,5 @@
 // Required dependencies
+
 import express from "express"
 const app = express()
 import {client} from "./db/db.js"
