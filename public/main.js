@@ -15,6 +15,8 @@ const courtTable = document.querySelector("#court-table")
 courtTable.className = "hidden"
 timeTable.className = "hidden"
 const datepicker = document.querySelector("#datepicker")
+const reservationComplete = document.querySelector("#reservation-complete")
+reservationComplete.className = "hidden"
 const logo = document.querySelector("#logo") 
 logo.addEventListener('click',(e) =>{
   buildHome() 
@@ -206,15 +208,23 @@ function createReservation(court_id,reservation){
     },
     body: JSON.stringify(data)
   }
-  // fetch("/reservations", options)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log('Success:', data);
-  //       buildCourts(data,reservation_data)
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error:', error);
-  //     })
+  fetch("/reservations", options)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('Success:', data);
+      buildSucess(data)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
 }
 
-
+function buildSucess(obj){
+  // console.log(obj)
+  console.log(obj.rows[0].id)
+  let p = document.createElement("p")
+  let name = data.rows[0].location_name
+  p.innerText = `Success, you reserved `
+  reservationComplete.appendChild("p")
+  reservations.className = "hidden"  
+}

@@ -41,15 +41,16 @@ app.post("/courts",  async (req, res) => {
         res.status(500).type('text/plain').send(error)
     }  
 })
-// app.post("/reservations",  async (req, res) => {
-//     let {court_id,user_id,date,time} = req.body
-//     try {
-//         const result = await client.query(,[court_id,user_id,date,time])
-//         res.status(200).type('application/json').send(JSON.stringify(result))
-//     } catch(error) {
-//         res.status(500).type('text/plain').send(error)
-//     }  
-// })
+app.post("/reservations",  async (req, res) => {
+    let {court_id,user_id,date,time} = req.body
+    try {
+        const result = await client.query('INSERT INTO reservations (court_id,user_id,res_date,res_time) VALUES ($1,$2,$3,$4);',[court_id,user_id,date,time])
+        const rt = await client.query('SELECT * FROM locations INNER JOIN courts ON courts.location_id=locations.id where courts.id = $1;',[court_id])
+        res.status(200).type('application/json').send(JSON.stringify(rt))
+    } catch(error) {
+        res.status(500).type('text/plain').send(error)
+    }  
+})
 
 
 // Server Listening
