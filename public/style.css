@@ -196,7 +196,62 @@ body{
     height: 100%;
     width: 47.5%;
     right: 0;
-    background-color: cyan;
 }
-
-
+.time-table{
+    position: absolute; 
+    height: auto;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: gray;
+}
+#time-table p{
+    display: block;
+}
+#time-table-content{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: center;
+    gap: 20px;
+    padding: 10px;
+}
+.time-btn{
+    display: inline-block;
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+    font-size: 24pt;
+    padding: 3px;
+    margin: auto;
+}
+/* #court-table p{
+    display: block;
+} */
+#court-table-content{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: left;
+    gap: 20px;
+    padding: 10px;
+    background-color: skyblue;
+}
+.court-btn{
+    border-radius: 30px;
+    border: 1px solid white;
+    padding: 5px
+    height: auto;
+    width: auto;
+    font-size: 12pt;
+    padding: 8px;
+    margin: auto;
+    color: white;
+    cursor: pointer;
+}

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Server</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" type="text/html" href="/node_modules/window-date-picker/dist/css/window-date-picker.min.css" /> -->
-    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/>
-    <!-- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script> -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.js" integrity="sha512-CTSrPIDxxtTdaIYlTKHEyvHa+70TOhC1pY3PLDgrUqCFifFtV7KrucZCvPy2K7hB0HtKgt0r4INTGBISqnaLNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer type='module' src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="nav">
@@ -18,7 +19,6 @@
             <div id="logo"></div>
             </div>
         <div id="nav-container">
-            <!-- <p>Find A Match</p>  -->
             <div="login">
                 <p id="loginBtn">login</p>
                 <div id="logged-in">
@@ -40,9 +40,7 @@
         </div>
         <div id="home">
             <div id="locationContainer"></div>
-            <div id="map" class="map-picker"></div>
-            <!-- <div id="map-picker" class="map-picker"></div> -->
-            <!-- <script type="module" src="./js/map.js"></script> -->
+            <!-- <div id="map" class="map-picker"></div> -->
         </div>
         <div id="reservations">
             <div id="reservations-container">
@@ -57,15 +55,38 @@
                         </p>
                     </div>
                 </div>
-                <div id="datepicker">
-                    <p>Choose A Date</p>
-                    <div id="blue-picker" class="wdp-blue"></div>
-                    <input id="demo">
-                    <button id="toggle">Lanuch</button>           
+                <div id="datepicker">         
+                    <div id="picker">
+                        <p>Choose A Date</p>  
+                    </div>
+                    <div id="time-table">
+                        <p>Choose A Time</p>
+                        <div id="time-table-content"></div>
+                    </div>
+                    <div id="court-table">
+                        <p>Choose A Court</p>
+                        <div id="court-table-content"></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="reservation-complete"></div>   
     </div>
+ <script defer type="text/javascript">
+    // $( function() { -->
+    //     const picker = $( "#picker" ).datepicker({
+    //         onSelect: function(date){
+    //             let psqlDate = parseDate(date)
+    //         }
+    //     })
+    //     function parseDate(date){
+    //         let year = date.slice(-4)
+    //         let month = date.slice(3,5)
+    //         let day = date.slice(0,2)
+    //         return `${year}-${month}-${day}`
+    //     }  
+    // })
+</script>
 </body>
 </html>
+

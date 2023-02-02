@@ -1,5 +1,3 @@
-// import {picker} from 'datepicker.js' 
-//DOM
 const login = document.querySelector("#login")
 login.className = "hidden"
 const home = document.querySelector("#home")
@@ -10,6 +8,13 @@ locationContainer.className = "locationContainer"
 // mapPicker.className = "map-picker"
 const reservations = document.querySelector("#reservations")
 reservations.className = 'hidden'
+const timeTable = document.querySelector("#time-table")
+timeTable.className = "hidden"
+const timeTableContent = document.querySelector("#time-table-content")
+const courtTable = document.querySelector("#court-table")
+courtTable.className = "hidden"
+timeTable.className = "hidden"
+const datepicker = document.querySelector("#datepicker")
 const logo = document.querySelector("#logo") 
 logo.addEventListener('click',(e) =>{
   buildHome() 
@@ -85,7 +90,6 @@ function buildLocationMenu(arr){
     })
     
   })
-
 }
 function buildReservation(loc){
   const thumb = document.querySelector("#reservations-thumb")
@@ -111,6 +115,7 @@ function buildReservation(loc){
     address.innerText = obj['address']
     open.innerText = obj['open_time'].slice(0,-3)
     close.innerText = obj['close_time'].slice(0,-3)
+    buildPicker(obj.open_time,obj.close_time,obj.id)
   })
   .catch((error) => {
       console.error('Error:', error);
@@ -120,3 +125,96 @@ function buildReservation(loc){
 
 }
 // SELECT * FROM courts INNER JOIN locations ON courts.location_id=locations.id WHERE location_id = 1;
+function buildPicker(open,close,id){
+  $( function() {
+    const picker = $( "#picker" ).datepicker({
+        onSelect: function(date){
+            let psqlDate = parseDate(date)
+            $('#picker').hide()
+            timeTable.className = 'time-table'
+            let start = parseInt( open.slice(0,2) )
+            let end = parseInt( close.slice(0,2) )
+            for (var i = start; i < end; i += 2) {
+              let timeBtn = document.createElement("p")
+              timeBtn.className = 'time-btn'
+              //fix with moment
+              timeBtn.innerText = i.toString()+":00"
+              timeTableContent.append(timeBtn)
+              const reservation_data = {
+                'date':psqlDate,
+                'location_id':id.toString()
+              }
+              timeBtn.addEventListener('click',(e) =>{
+                reservation_data['time'] = e.path[0].innerText
+                const options = {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type':'application/json'
+                  },
+                  body: JSON.stringify(reservation_data)
+                }
+                fetch("/courts", options)
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log('Success:', data);
+                    buildCourts(data,reservation_data)
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  })
+              })
+            }
+        }
+    })
+function parseDate(date){
+      let year = date.slice(-4)
+      let month = date.slice(3,5)
+      let day = date.slice(0,2)
+      return `${year}-${month}-${day}`
+  }  
+})
+}
+function buildCourts(obj,reservation_obj){
+  const courtTableContent = document.querySelector("#court-table-content")
+  console.log(reservation_obj)
+  obj.rows.forEach(el =>{
+    let courtName = el.court_name
+    let id = el.id.toString()
+    let courtBtn = document.createElement("p")
+    courtBtn.className = 'court-btn'
+    courtBtn.innerText = el.court_name
+    courtTableContent.append(courtBtn)
+    timeTable.className = "hidden"
+    courtTable.className = "court-table"
+    courtBtn.addEventListener("click",()=>{
+      createReservation(id,reservation_obj)
+    })
+  })
+}
+function createReservation(court_id,reservation){ 
+  let data = {
+    'court_id': court_id,
+    'user_id':1, //hard coded bc why not
+    'date': reservation.date,
+    'time': reservation.time+":00"
+  }
+  console.log(data)
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  // fetch("/reservations", options)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log('Success:', data);
+  //       buildCourts(data,reservation_data)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     })
+}
+
+
