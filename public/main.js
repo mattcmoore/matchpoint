@@ -17,6 +17,8 @@ timeTable.className = "hidden"
 const datepicker = document.querySelector("#datepicker")
 const reservationComplete = document.querySelector("#reservation-complete")
 reservationComplete.className = "hidden"
+const cancel = document.querySelector("#cancel")
+cancel.className = 'hidden'
 const logo = document.querySelector("#logo") 
 logo.addEventListener('click',(e) =>{
   buildHome() 
@@ -26,6 +28,9 @@ function buildHome(){
   hidden.forEach(el => {
     el.className = 'hidden'
   })
+  reservationComplete.className = "hidden"
+  cancel.className = 'hidden'
+
   home.className = 'home'  
   console.log('hidden')
 }
@@ -221,10 +226,12 @@ function createReservation(court_id,reservation){
 
 function buildSucess(obj){
   // console.log(obj)
-  console.log(obj.rows[0].id)
+  let id = obj.rows[0].id
   let p = document.createElement("p")
-  let name = data.rows[0].location_name
-  p.innerText = `Success, you reserved `
-  reservationComplete.appendChild("p")
+  let name = obj.rows[0].location_name
+  p.innerText = `Success, you reserved court ${id} at ${name}`
+  reservationComplete.prepend(p)
   reservations.className = "hidden"  
+  reservationComplete.className = ".reservationComplete"
+  cancel.className = "cancel"
 }

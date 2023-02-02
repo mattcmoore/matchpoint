@@ -255,3 +255,19 @@ body{
     color: white;
     cursor: pointer;
 }
+.reservation-complete{
+    height: 100%;
+    width: 100%;
+    background-color: skyblue;
+}
+#reservation-complete p{
+    margin-left: 10px;
+}
+
+#cancel{
+    margin-left: 10px;
+}
+#cancel span{
+    color: blue;
+    cursor: pointer;
+}
